@@ -164,6 +164,11 @@ def _rebuild_like(scene):
     return clone
 
 
+def cmd_granularity(args) -> int:
+    from .granularity_experiment import main as experiment_main
+    return experiment_main()
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(
         prog="flowkern",
@@ -200,6 +205,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--verify", type=int, default=8,
                    help="number of edits to verify against full redraw")
     p.set_defaults(func=cmd_stress)
+
+    p = sub.add_parser("granularity",
+                       help="node-dirty vs region-propagation experiment")
+    p.set_defaults(func=cmd_granularity)
     return ap
 
 

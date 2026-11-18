@@ -1,0 +1,2158 @@
+{
+  "viewport": [
+    1120,
+    460
+  ],
+  "fallback_policy": {
+    "dirty_area_ratio": 0.6,
+    "dirty_rect_count": 12,
+    "dependent_ratio": 0.5
+  },
+  "scenarios": [
+    {
+      "name": "big_node_move",
+      "description": "large node + connected edges moved inside a dense grid",
+      "object_count": 81,
+      "steps": [
+        {
+          "step": 0,
+          "op": "move",
+          "target": 80,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 728700,
+              "commands": 3375,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 165640,
+              "painted_px": 245563,
+              "commands": 165,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 83942
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 165640,
+              "painted_px": 488843,
+              "commands": 1655,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 44,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 1,
+          "op": "move",
+          "target": 80,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 727723,
+              "commands": 3375,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 44/81 >= 50% of display list",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 186140,
+              "painted_px": 265086,
+              "commands": 165,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 98300
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 186140,
+              "painted_px": 535790,
+              "commands": 1655,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 44,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 2,
+          "op": "move",
+          "target": 80,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 680448,
+              "commands": 3281,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 153340,
+              "painted_px": 185011,
+              "commands": 71,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 111005
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 153340,
+              "painted_px": 407019,
+              "commands": 1165,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 35,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 3,
+          "op": "move",
+          "target": 1,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 675463,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 81/81 >= 50% of display list",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 464600,
+              "painted_px": 495156,
+              "commands": 131,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 262524
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 675463,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 4,
+          "op": "move",
+          "target": 2,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 675689,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 38220,
+              "painted_px": 58511,
+              "commands": 129,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 3,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 258578
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 38220,
+              "painted_px": 98250,
+              "commands": 391,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 15,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 5,
+          "op": "move",
+          "target": 3,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 675591,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 36696,
+              "painted_px": 45537,
+              "commands": 12,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 3,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 257709
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 36696,
+              "painted_px": 80471,
+              "commands": 375,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 15,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 6,
+          "op": "move",
+          "target": 4,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 228245,
+              "painted_px": 562763,
+              "commands": 1785,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 51,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 10492,
+              "painted_px": 22335,
+              "commands": 57,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 251868
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 10492,
+              "painted_px": 22335,
+              "commands": 61,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 7,
+          "op": "move",
+          "target": 5,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 227290,
+              "painted_px": 561580,
+              "commands": 1783,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 51,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 15204,
+              "painted_px": 39560,
+              "commands": 127,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 240823
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 15204,
+              "painted_px": 49563,
+              "commands": 277,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 8,
+          "op": "move",
+          "target": 6,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 227290,
+              "painted_px": 561488,
+              "commands": 1783,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 51,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 19610,
+              "painted_px": 44917,
+              "commands": 143,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 235446
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 19610,
+              "painted_px": 60988,
+              "commands": 354,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 11,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 9,
+          "op": "move",
+          "target": 7,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 235144,
+              "painted_px": 576770,
+              "commands": 1783,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 51,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 24381,
+              "painted_px": 33388,
+              "commands": 12,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 3,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 236476
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 24381,
+              "painted_px": 66986,
+              "commands": 345,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 11,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 10,
+          "op": "move",
+          "target": 8,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 247000,
+              "painted_px": 587692,
+              "commands": 1807,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 51,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 17139,
+              "painted_px": 24814,
+              "commands": 58,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 236430
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 17139,
+              "painted_px": 34173,
+              "commands": 149,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 6,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 11,
+          "op": "move",
+          "target": 9,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 672021,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 21614,
+              "painted_px": 39669,
+              "commands": 103,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 230852
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 21614,
+              "painted_px": 66115,
+              "commands": 254,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 11,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 12,
+          "op": "set_text",
+          "target": 1,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 671585,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 81/81 >= 50% of display list",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 464600,
+              "painted_px": 494726,
+              "commands": 131,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 255507
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 671585,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 13,
+          "op": "set_text",
+          "target": 2,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 671257,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 40600,
+              "painted_px": 60556,
+              "commands": 129,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 3,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 255103
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 40600,
+              "painted_px": 110177,
+              "commands": 413,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 15,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 14,
+          "op": "set_text",
+          "target": 3,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 670887,
+              "commands": 3255,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dirty area >= 60% of viewport",
+              "replay_entries": 81,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 29468,
+              "painted_px": 37939,
+              "commands": 12,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 3,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 253800
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 29468,
+              "painted_px": 79717,
+              "commands": 339,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 15,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 15,
+          "op": "set_text",
+          "target": 4,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 228245,
+              "painted_px": 562597,
+              "commands": 1785,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 51,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 7590,
+              "painted_px": 19077,
+              "commands": 57,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 81,
+              "pixel_match": false,
+              "mismatch_px": 247923
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 7590,
+              "painted_px": 19077,
+              "commands": 61,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 81,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        }
+      ],
+      "totals": {
+        "node_dirty": {
+          "dirty_area_px": 6545214,
+          "painted_px": 10262254,
+          "commands": 43542,
+          "replay_entries": 1116,
+          "full_fallbacks": 10,
+          "pixel_mismatches": 0,
+          "steps": 16
+        },
+        "naive_node_dirty": {
+          "dirty_area_px": 1695334,
+          "painted_px": 2111845,
+          "commands": 1502,
+          "replay_entries": 37,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 3516286,
+          "steps": 16
+        },
+        "region_propagation": {
+          "dirty_area_px": 1796534,
+          "painted_px": 3466552,
+          "commands": 14004,
+          "replay_entries": 392,
+          "full_fallbacks": 2,
+          "pixel_mismatches": 0,
+          "steps": 16
+        }
+      }
+    },
+    {
+      "name": "tiny_primitive_edit",
+      "description": "small label/geometry edits on fine-grained primitives",
+      "object_count": 72,
+      "steps": [
+        {
+          "step": 0,
+          "op": "set_text",
+          "target": 1,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 558983,
+              "commands": 2741,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 56/72 >= 50% of display list",
+              "replay_entries": 72,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 237600,
+              "painted_px": 260473,
+              "commands": 119,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 142313
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 237600,
+              "painted_px": 607156,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 1,
+          "op": "set_text",
+          "target": 2,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 237600,
+              "painted_px": 606868,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 15151,
+              "painted_px": 30260,
+              "commands": 99,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 137145
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 15151,
+              "painted_px": 40739,
+              "commands": 306,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 8,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 2,
+          "op": "set_text",
+          "target": 3,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 228448,
+              "painted_px": 578696,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 12120,
+              "painted_px": 20978,
+              "commands": 10,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 132478
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 12120,
+              "painted_px": 28246,
+              "commands": 77,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 6,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 3,
+          "op": "set_text",
+          "target": 4,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 228448,
+              "painted_px": 578380,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 36750,
+              "painted_px": 51164,
+              "commands": 66,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 129501
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 36750,
+              "painted_px": 98706,
+              "commands": 419,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 16,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 4,
+          "op": "set_text",
+          "target": 5,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 228448,
+              "painted_px": 578064,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 34510,
+              "painted_px": 59102,
+              "commands": 129,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 123784
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 34510,
+              "painted_px": 101767,
+              "commands": 495,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 17,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 5,
+          "op": "set_text",
+          "target": 6,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 221840,
+              "painted_px": 569436,
+              "commands": 1955,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 34056,
+              "painted_px": 52103,
+              "commands": 112,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 122539
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 34056,
+              "painted_px": 91301,
+              "commands": 371,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 15,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 6,
+          "op": "set_text",
+          "target": 7,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 221840,
+              "painted_px": 569054,
+              "commands": 1955,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 21680,
+              "painted_px": 33801,
+              "commands": 12,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 3,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 120051
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 21680,
+              "painted_px": 54424,
+              "commands": 195,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 10,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 7,
+          "op": "set_text",
+          "target": 8,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 237840,
+              "painted_px": 605607,
+              "commands": 1969,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 30624,
+              "painted_px": 48055,
+              "commands": 73,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 116584
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 30624,
+              "painted_px": 82536,
+              "commands": 386,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 14,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 8,
+          "op": "set_text",
+          "target": 9,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 237840,
+              "painted_px": 605273,
+              "commands": 1969,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 23256,
+              "painted_px": 40638,
+              "commands": 119,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 3,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 118592
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 23256,
+              "painted_px": 66835,
+              "commands": 388,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 11,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 9,
+          "op": "set_text",
+          "target": 10,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 217800,
+              "painted_px": 559469,
+              "commands": 1839,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 14308,
+              "painted_px": 37068,
+              "commands": 123,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 109385
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 14308,
+              "painted_px": 43793,
+              "commands": 138,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 6,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 10,
+          "op": "set_text",
+          "target": 1,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 556241,
+              "commands": 2741,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 56/72 >= 50% of display list",
+              "replay_entries": 72,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 237600,
+              "painted_px": 260361,
+              "commands": 119,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 144060
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 237600,
+              "painted_px": 604466,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 11,
+          "op": "move",
+          "target": 1,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 556091,
+              "commands": 2741,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 56/72 >= 50% of display list",
+              "replay_entries": 72,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 237600,
+              "painted_px": 260211,
+              "commands": 119,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 143516
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 237600,
+              "painted_px": 604316,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 12,
+          "op": "move",
+          "target": 2,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 230670,
+              "painted_px": 595522,
+              "commands": 1955,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 20016,
+              "painted_px": 35117,
+              "commands": 99,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 140030
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 20016,
+              "painted_px": 59080,
+              "commands": 318,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 8,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 13,
+          "op": "move",
+          "target": 3,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 225544,
+              "painted_px": 570306,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 19598,
+              "painted_px": 28564,
+              "commands": 10,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 135480
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 19598,
+              "painted_px": 35990,
+              "commands": 79,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 7,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 14,
+          "op": "move",
+          "target": 4,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 241388,
+              "painted_px": 586259,
+              "commands": 1961,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 56,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 47232,
+              "painted_px": 61862,
+              "commands": 66,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 72,
+              "pixel_match": false,
+              "mismatch_px": 132387
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 47232,
+              "painted_px": 112885,
+              "commands": 426,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 17,
+              "scanned_entries": 72,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        }
+      ],
+      "totals": {
+        "node_dirty": {
+          "dirty_area_px": 4303306,
+          "painted_px": 8674249,
+          "commands": 31631,
+          "replay_entries": 888,
+          "full_fallbacks": 3,
+          "pixel_mismatches": 0,
+          "steps": 15
+        },
+        "naive_node_dirty": {
+          "dirty_area_px": 1022101,
+          "painted_px": 1279757,
+          "commands": 1275,
+          "replay_entries": 42,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 1947845,
+          "steps": 15
+        },
+        "region_propagation": {
+          "dirty_area_px": 1022101,
+          "painted_px": 2632240,
+          "commands": 9481,
+          "replay_entries": 303,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 0,
+          "steps": 15
+        }
+      }
+    },
+    {
+      "name": "translucent_overlap",
+      "description": "edits inside stacked translucent overlaps (dependency test)",
+      "object_count": 6,
+      "steps": [
+        {
+          "step": 0,
+          "op": "set_fill",
+          "target": 1,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 393541,
+              "commands": 1041,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 5/6 >= 50% of display list",
+              "replay_entries": 6,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 51570,
+              "painted_px": 198209,
+              "commands": 366,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 6,
+              "pixel_match": false,
+              "mismatch_px": 41100
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 51570,
+              "painted_px": 361901,
+              "commands": 842,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 5,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 1,
+          "op": "move",
+          "target": 3,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 393541,
+              "commands": 1041,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 5/6 >= 50% of display list",
+              "replay_entries": 6,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 35090,
+              "painted_px": 106840,
+              "commands": 185,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 6,
+              "pixel_match": false,
+              "mismatch_px": 36270
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 35090,
+              "painted_px": 272543,
+              "commands": 642,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 5,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 2,
+          "op": "set_text",
+          "target": 4,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 393697,
+              "commands": 1041,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 4/6 >= 50% of display list",
+              "replay_entries": 6,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 22750,
+              "painted_px": 84480,
+              "commands": 165,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 6,
+              "pixel_match": false,
+              "mismatch_px": 21500
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 22750,
+              "painted_px": 180245,
+              "commands": 460,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 4,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 3,
+          "op": "set_text",
+          "target": 1,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 515200,
+              "painted_px": 393853,
+              "commands": 1041,
+              "clip_pushes": 0,
+              "fell_back": true,
+              "fallback_reason": "dependency set 5/6 >= 50% of display list",
+              "replay_entries": 6,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 51570,
+              "painted_px": 198365,
+              "commands": 366,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 2,
+              "scanned_entries": 6,
+              "pixel_match": false,
+              "mismatch_px": 39620
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 51570,
+              "painted_px": 358201,
+              "commands": 842,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 5,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 4,
+          "op": "set_text",
+          "target": 6,
+          "naive_expected_to_break": true,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 15390,
+              "painted_px": 57414,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 15390,
+              "painted_px": 57414,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 6,
+              "pixel_match": false,
+              "mismatch_px": 39620
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 15390,
+              "painted_px": 57414,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 6,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        }
+      ],
+      "totals": {
+        "node_dirty": {
+          "dirty_area_px": 2076190,
+          "painted_px": 1632046,
+          "commands": 4309,
+          "replay_entries": 25,
+          "full_fallbacks": 4,
+          "pixel_mismatches": 0,
+          "steps": 5
+        },
+        "naive_node_dirty": {
+          "dirty_area_px": 176370,
+          "painted_px": 645308,
+          "commands": 1227,
+          "replay_entries": 7,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 178110,
+          "steps": 5
+        },
+        "region_propagation": {
+          "dirty_area_px": 176370,
+          "painted_px": 1230304,
+          "commands": 2931,
+          "replay_entries": 20,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 0,
+          "steps": 5
+        }
+      }
+    },
+    {
+      "name": "isolated_opaque",
+      "description": "disjoint opaque nodes: naive per-object repaint must work",
+      "object_count": 12,
+      "steps": [
+        {
+          "step": 0,
+          "op": "set_text",
+          "target": 1,
+          "naive_expected_to_break": false,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43538,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43538,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43538,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 1,
+          "op": "set_text",
+          "target": 6,
+          "naive_expected_to_break": false,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 42740,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 42740,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 42740,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 2,
+          "op": "set_text",
+          "target": 10,
+          "naive_expected_to_break": false,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43388,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43388,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43388,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        },
+        {
+          "step": 3,
+          "op": "set_text",
+          "target": 3,
+          "naive_expected_to_break": false,
+          "strategies": {
+            "node_dirty": {
+              "strategy": "node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43482,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "naive_node_dirty": {
+              "strategy": "naive_node_dirty",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43482,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            },
+            "region_propagation": {
+              "strategy": "region_propagation",
+              "dirty_rects": 1,
+              "dirty_area_px": 11396,
+              "painted_px": 43482,
+              "commands": 145,
+              "clip_pushes": 1,
+              "fell_back": false,
+              "fallback_reason": "",
+              "replay_entries": 1,
+              "scanned_entries": 12,
+              "pixel_match": true,
+              "mismatch_px": 0
+            }
+          }
+        }
+      ],
+      "totals": {
+        "node_dirty": {
+          "dirty_area_px": 45584,
+          "painted_px": 173148,
+          "commands": 580,
+          "replay_entries": 4,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 0,
+          "steps": 4
+        },
+        "naive_node_dirty": {
+          "dirty_area_px": 45584,
+          "painted_px": 173148,
+          "commands": 580,
+          "replay_entries": 4,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 0,
+          "steps": 4
+        },
+        "region_propagation": {
+          "dirty_area_px": 45584,
+          "painted_px": 173148,
+          "commands": 580,
+          "replay_entries": 4,
+          "full_fallbacks": 0,
+          "pixel_mismatches": 0,
+          "steps": 4
+        }
+      }
+    }
+  ],
+  "failures": []
+}

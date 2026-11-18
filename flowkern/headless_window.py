@@ -20,10 +20,14 @@ commands (all edits are retained; only invalid regions are repainted):
   text <node|edge> <id> <string>  replace label
   move <id> <x> <y>               move node (edges follow, old area cleared)
   drag <id> <x1> <y1> <x2> <y2>   simulate a drag with begin/end events
+  vdrag <id> <x1> <y1> <x2> <y2>  drag, then byte-verify vs a full frame
   delete <node|edge> <id>         remove object and erase its old pixels
   pan <dx> <dy>                   translate the view (pixel scroll)
   zoom <factor>                   scale around the viewport centre
   hit <x> <y>                     hit-test a device point
+  verify                          recompute full frame and compare every pixel
+  granularity [id [dx dy]]        compare node-flag vs region-propagation
+                                  update strategies on one move (live evidence)
   list                            show the display list
   dirty                           show current invalidated rectangles
   stats                           show real paint work counters
@@ -78,6 +82,12 @@ class HeadlessWindow:
                 self._move(int(args[0]), float(args[1]), float(args[2]))
             elif cmd == "drag":
                 self._drag(*(int(a) for a in args))
+            elif cmd == "vdrag":
+                self._verified_drag(*(int(a) for a in args))
+            elif cmd == "verify":
+                self._verify()
+            elif cmd == "granularity":
+                self._granularity(args)
             elif cmd == "delete":
                 self.editor.delete(args[0], int(args[1]))
                 print("deleted")
@@ -142,6 +152,60 @@ class HeadlessWindow:
         self.editor.drag_to(x2, y2)
         self.editor.end_drag()
         self._print_step(f"drag node {nid}")
+
+    def _verified_drag(self, nid, x1, y1, x2, y2) -> None:
+        """A real retained drag through the production kernel, followed by a
+        full-frame byte comparison so the flowchart content and the dirty
+        region are checked against evidence, not just the text panel."""
+        hit = self.editor.begin_drag(x1, y1)
+        if hit is None or hit.obj_id != nid:
+            print("[retained-draw error] drag start missed the node")
+            return
+        self.editor.drag_to(x2, y2)
+        self.editor.end_drag()
+        self._print_step(f"verified drag node {nid}")
+        self._verify()
+
+    def _verify(self) -> None:
+        ev = self.editor.verify_against_full_frame()
+        print("    verify: "
+              + ("PIXEL-IDENTICAL to independent full frame"
+                 if ev["pixel_match"]
+                 else f"MISMATCH {ev['pixel_mismatch']} px")
+              + f" | dirty {ev['dirty_area_px']}px / "
+              f"{ev['frame_area_px']}px frame "
+              f"({100 * ev['dirty_area_px'] / max(1, ev['frame_area_px']):.2f}%)"
+              + f" | rects={len(ev['dirty_rects'])} "
+              f"painted_px={ev['work']['painted_px']}")
+
+    def _granularity(self, args) -> None:
+        """Live comparison of the two update prototypes on one move."""
+        if args:
+            nid = int(args[0])
+            dx = float(args[1]) if len(args) > 1 else 40.0
+            dy = float(args[2]) if len(args) > 2 else 24.0
+            edit = ("move", nid, dx, dy)
+            label = f"move node {nid} by ({dx},{dy})"
+        else:
+            edit = None
+            label = "current scene state"
+        try:
+            cmp_ = self.editor.compare_update_strategies(edit)
+        except EditorError as exc:
+            print(f"[retained-draw error] {exc}")
+            return
+        print(f"granularity comparison — {label}")
+        names = {"node_dirty": "节点脏标记(依赖扩展)",
+                 "naive_node_dirty": "朴素节点脏标记(负对照)",
+                 "region_propagation": "绘制区域传播(生产)"}
+        for key, row in cmp_.items():
+            fb = f" FULL-FALLBACK:{row['fallback_reason']}" if row[
+                "fell_back"] else ""
+            print(f"  {names[key]:<22} dirty={row['dirty_area_px']:>7d}px "
+                  f"painted={row['painted_px']:>8d}px "
+                  f"rects={row['dirty_rects']:>2d} "
+                  f"pixel_match={row['pixel_match']} "
+                  f"mismatch={row['pixel_mismatch']}{fb}")
 
     def _save_overlay(self, path: str) -> None:
         import copy

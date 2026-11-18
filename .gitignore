@@ -23,3 +23,7 @@ __pycache__/
 *.log
 .env
 .env.*
+
+# granularity experiment PPM evidence is regenerated locally; the numeric
+# evidence (granularity_results.json / _report.md) is kept under version control
+demo_out/granularity_*.ppm

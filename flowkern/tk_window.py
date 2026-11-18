@@ -52,6 +52,10 @@ class TkWindow:
         bar.pack(fill="x", pady=(6, 0))
         tk.Button(bar, text="full reference",
                   command=self._full_reference).pack(side="left")
+        tk.Button(bar, text="verify pixels",
+                  command=self._verify_pixels).pack(side="left", padx=4)
+        tk.Button(bar, text="granularity",
+                  command=self._granularity).pack(side="left")
         tk.Button(bar, text="overlay dirty",
                   command=self._toggle_overlay).pack(side="left", padx=4)
         tk.Button(bar, text="add node", command=self._add_node).pack(
@@ -150,6 +154,9 @@ class TkWindow:
 
     def _on_release(self, ev):
         self.editor.end_drag()
+        # Every completed drag is checked against an independent full frame
+        # so the window shows retained-draw correctness as live evidence.
+        self._guard(self._verify_pixels_silent)
         self.refresh()
 
     def _on_pan_start(self, ev):
@@ -176,6 +183,48 @@ class TkWindow:
 
     def _full_reference(self):
         self.editor.full_redraw_reference()
+
+    def _verify_pixels_silent(self):
+        ev = self.editor.verify_against_full_frame()
+        if ev["pixel_match"]:
+            self.editor.message = (
+                f"verified pixel-identical; dirty "
+                f"{ev['dirty_area_px']}/{ev['frame_area_px']}px")
+        else:
+            raise EditorError(
+                f"{ev['pixel_mismatch']} px mismatch vs full frame")
+
+    def _verify_pixels(self):
+        def fn():
+            ev = self.editor.verify_against_full_frame()
+            if not ev["pixel_match"]:
+                raise EditorError(
+                    f"{ev['pixel_mismatch']} px mismatch vs full frame")
+            self.status.set(
+                f"pixel-identical; dirty {ev['dirty_area_px']}px "
+                f"({100 * ev['dirty_area_px'] / max(1, ev['frame_area_px']):.2f}%"
+                " of frame)")
+        self._guard(fn)
+
+    def _granularity(self):
+        # Drive both retained prototypes from the kernel, on a cloned scene;
+        # failures are surfaced through the same retained-draw error path.
+        def fn():
+            nid = next(iter(self.editor.scene.nodes))
+            cmp_ = self.editor.compare_update_strategies(
+                ("move", nid, 40.0, 24.0))
+            lines = ["update granularity (one node move):"]
+            for key, row in cmp_.items():
+                lines.append(
+                    f"  {key}: dirty={row['dirty_area_px']}px "
+                    f"painted={row['painted_px']}px "
+                    f"match={row['pixel_match']} "
+                    f"mismatch={row['pixel_mismatch']}"
+                    + (f" fallback={row['fallback_reason']}"
+                       if row["fell_back"] else ""))
+            self.info_box.delete("1.0", "end")
+            self.info_box.insert("end", "\n".join(lines))
+        self._guard(fn)
 
     def _toggle_overlay(self):
         self.show_overlay = not self.show_overlay

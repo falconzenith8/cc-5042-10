@@ -191,6 +191,103 @@ class Editor:
         self.kernel.render_full()
         self.message = "full frame reference redraw"
 
+    def verify_against_full_frame(self) -> dict:
+        """Recompute the current scene on an independent surface and compare
+        every RGBA byte with the retained kernel's surface.
+
+        Returns measured evidence (mismatch count, dirty area, work stats)
+        instead of a boolean guess, so the editing window can show the user
+        exactly what the retained repaint produced.
+        """
+        from .raster import Surface
+        from .displaylist import build_display_list, execute_command
+        ref = Surface(self.kernel.w, self.kernel.h, self.kernel.bg)
+        for entry in build_display_list(self.scene, self.kernel.transform):
+            for cmd in entry.commands:
+                execute_command(ref, cmd)
+        a, b = self.kernel.surface.buf, ref.buf
+        mismatch = sum(1 for i in range(0, len(a), 4)
+                       if a[i:i + 4] != b[i:i + 4])
+        dirty = self.kernel.last_repainted
+        evidence = {
+            "pixel_mismatch": mismatch,
+            "pixel_match": mismatch == 0,
+            "dirty_rects": [(r.x0, r.y0, r.x1, r.y1) for r in dirty],
+            "dirty_area_px": sum(r.area for r in dirty),
+            "frame_area_px": self.kernel.w * self.kernel.h,
+            "work": self.kernel.stats(),
+        }
+        self.message = ("pixel-identical to full frame"
+                        if mismatch == 0
+                        else f"MISMATCH {mismatch} px vs full frame")
+        return evidence
+
+    def compare_update_strategies(self, edit=None) -> dict:
+        """Replay one edit through both granularity prototypes on a scene
+        clone and return measured repaint area + pixel evidence.
+
+        ``edit`` is ``("move", nid, dx, dy)`` or ``("set_text", nid, text)``;
+        when omitted the current scene state alone is compared.  The
+        production kernel's surface is never touched.
+        """
+        from .updaters import (NodeDirtyUpdater, RegionPropagationUpdater,
+                               NaiveNodeDirtyUpdater)
+        from .cli import _rebuild_like
+        clone = _rebuild_like(self.scene)
+        common = dict(width=self.kernel.w, height=self.kernel.h,
+                      transform=self.kernel.transform)
+        nd = NodeDirtyUpdater(clone, **common)
+        nv = NaiveNodeDirtyUpdater(clone, **common)
+        rp = RegionPropagationUpdater(clone, **common)
+
+        keys = set()
+        old_nd = old_nv = old_rp = []
+        if edit is not None:
+            op = edit[0]
+            if op == "move":
+                _, nid, dx, dy = edit
+                keys = {("node", nid)}
+                for eid in clone.connected_edges(nid):
+                    keys.add(("edge", eid))
+                old_nd, old_nv, old_rp = (nd.bounds_of(keys),
+                                          nv.bounds_of(keys),
+                                          rp.bounds_of(keys))
+                node = clone.nodes[nid]
+                clone.move_node(nid, node.x + dx, node.y + dy)
+            elif op == "set_text":
+                _, nid, text = edit
+                keys = {("node", nid)}
+                old_nd, old_nv, old_rp = (nd.bounds_of(keys),
+                                          nv.bounds_of(keys),
+                                          rp.bounds_of(keys))
+                clone.set_node_text(nid, text)
+            else:
+                raise EditorError(f"unknown compare edit {op}")
+            nd.flag(keys, old_nd)
+            nv.flag(keys, old_nv)
+            rp.invalidate(keys, old_rp)
+
+        results = {"node_dirty": nd.update(),
+                   "naive_node_dirty": nv.update(),
+                   "region_propagation": rp.update()}
+        ref = rp.render_full_reference()
+        out = {}
+        for name, res in results.items():
+            up = {"node_dirty": nd, "naive_node_dirty": nv,
+                  "region_propagation": rp}[name]
+            mm = sum(1 for i in range(0, len(up.surface.buf), 4)
+                     if up.surface.buf[i:i + 4] != ref.buf[i:i + 4])
+            out[name] = {
+                "pixel_mismatch": mm,
+                "pixel_match": mm == 0,
+                "dirty_rects": len(res.rects),
+                "dirty_area_px": res.dirty_area_px,
+                "painted_px": res.painted_px,
+                "fell_back": res.fell_back,
+                "fallback_reason": res.fallback_reason,
+            }
+        return out
+
     # --------------------------------------------------------------- info
     def dirty_rects(self) -> list[Rect]:
         return list(self.kernel.last_repainted)

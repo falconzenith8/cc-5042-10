@@ -15,8 +15,10 @@ Python RGBA 软件栅格器、显式的脏区与裁剪管理、对象身份与�
 | `build_display_list(scene, transform)` | `flowkern/displaylist.py` | 编译成带设备坐标与明确绘制顺序的 `PaintCommand` 显示列表 |
 | `RenderKernel.render_incremental()` | `flowkern/renderer.py` | 保留式局部重绘：算脏区、清旧像素、按 clip 重放命令 |
 | `RenderKernel.render_full()` | `flowkern/renderer.py` | 整帧参考路径，用于逐像素核对 |
-| `Editor`（`begin_drag/drag_to/end_drag/add_*/delete/pan/zoom`） | `flowkern/editor.py` | 后端无关的保留式编辑控制器 |
-| `HeadlessWindow` | `flowkern/headless_window.py` | 无显示环境的矢量编辑窗口（REPL / 脚本） |
+| `Editor`（`begin_drag/drag_to/end_drag/add_*/delete/pan/zoom/verify_against_full_frame/compare_update_strategies`） | `flowkern/editor.py` | 后端无关的保留式编辑控制器 |
+| 更新粒度原型（节点脏标记 / 朴素负对照 / 区域传播） | `flowkern/updaters.py` | 同一显示列表上的两套失效策略与显式全量回退 |
+| 更新粒度实验 | `flowkern/granularity_experiment.py` | 大节点移动、细小图元、透明重叠的面积+像素复算 |
+| `HeadlessWindow` | `flowkern/headless_window.py` | 无显示环境的矢量编辑窗口（REPL / 脚本，含 `vdrag/verify/granularity`） |
 | `TkWindow` | `flowkern/tk_window.py` | 桌面端保留式矢量窗口（懒加载 Tk，可选） |
 | 命令行 | `python3 -m flowkern.cli ...` | 仅辅助：渲染、编辑回放、压力对比 |
 
@@ -79,6 +81,10 @@ python3 -m flowkern.cli edit demo_out/edit_script.txt --out demo_out/edit
 # 密集节点 + 跨屏连线 + 半透明重叠，对比整帧参考与实际工作量
 python3 -m flowkern.cli stress --cols 12 --rows 14 --edits 40 --verify 8
 
+# 更新粒度实验：节点脏标记 vs 绘制区域传播（面积与逐像素复算，结论见
+# docs/granularity_experiment.md，数据写入 demo_out/granularity_*）
+python3 -m flowkern.cli granularity
+
 # 无头保留式矢量编辑窗口（交互式 REPL；help 查看命令）
 python3 -m flowkern.headless_window
 
@@ -86,10 +92,11 @@ python3 -m flowkern.headless_window
 python3 -m flowkern.tk_window
 ```
 
-无头窗口命令：`add / edge / text / move / drag / delete / pan / zoom / hit /
-list / dirty / stats / save / overlay / reference / dense / reset`。所有非法
-操作抛出的异常都被界面捕获并以 `[retained-draw error] ...` 提示，不会中断
-会话。
+无头窗口命令：`add / edge / text / move / drag / vdrag / verify /
+granularity / delete / pan / zoom / hit / list / dirty / stats / save /
+overlay / reference / dense / reset`。`vdrag` 在真实拖动后自动逐字节对照
+独立整帧，`granularity` 现场比较两套更新策略；所有非法操作抛出的异常都被
+界面捕获并以 `[retained-draw error] ...` 提示，不会中断会话。
 
 ## 7. 模块索引
 
@@ -103,12 +110,15 @@ flowkern/
   scene.py         保留场景图：稳定 id + 版本 + z 序
   displaylist.py   显示列表编译与 PaintCommand 记录
   renderer.py      RenderKernel：缓存、脏区、增量/整帧两条路径
-  editor.py        保留式编辑控制器（命中、拖拽、增删改、导航、异常回传）
+  updaters.py      更新粒度原型：节点脏标记(依赖扩展)、朴素负对照、区域传播
+  granularity_experiment.py  更新粒度对照实验（面积+逐像素，输出报告/JSON/PPM）
+  editor.py        保留式编辑控制器（命中、拖拽、增删改、导航、整帧核对、异常回传）
   scene_factory.py 演示流程图与密集压力场景
-  headless_window.py  无头保留式矢量编辑窗口
-  tk_window.py     可选 Tk 视图（显示列表/脏区/工作量面板）
-  cli.py           命令行辅助入口
-tests/test_kernel.py  20 项正确性与性能测试
+  headless_window.py  无头保留式矢量编辑窗口（vdrag/verify/granularity）
+  tk_window.py     可选 Tk 视图（显示列表/脏区/工作量面板、像素核对按钮）
+  cli.py           命令行辅助入口（render/edit/stress/granularity）
+tests/test_kernel.py  21 项正确性与性能测试
+tests/test_updaters.py 更新粒度、依赖扩展、全量回退与实验复算测试
 ```
 
 ## 8. 已知边界
