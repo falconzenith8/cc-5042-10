@@ -1,0 +1,17 @@
+# Retained edit session replayed by the headless editor window.
+hit 200 80
+move 3 600 120
+dirty
+stats
+add 480 240 HOTFIX NODE
+edge 4 10 HOTFIX
+text node 1 START
+pan 40 20
+zoom 1.2
+drag 2 360 90 420 160
+dirty
+delete edge 21
+save demo_out/edit_session
+overlay demo_out/edit_overlay
+reference
+stats
